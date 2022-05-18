@@ -51,7 +51,6 @@ public class DataLoader implements CommandLineRunner {
         guacamole.setDescription("Perfect Guacamole");
         Notes guacamoleNotes = new Notes();
         guacamoleNotes.setRecipeNotes("The best guacamole keeps it simple: just ripe avocados and a handful of flavorful mix-ins. Serve it as a dip at your next party or spoon it on top of tacos for an easy dinner upgrade.");
-        guacamoleNotes.setRecipe(guacamole);
         guacamole.setNotes(guacamoleNotes);
         guacamole.setPrepTime(10);
         guacamole.setCookTime(0);
@@ -74,16 +73,16 @@ public class DataLoader implements CommandLineRunner {
                 "\n" + "Refrigerate leftover guacamole up to 3 days.\n" +
                 "\n" + "Note: Chilling tomatoes hurts their flavor. So, if you want to add chopped tomato to your guacamole, add it just before serving.");
         guacamole.setDifficulty(Difficulty.EASY);
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Avocados", 2, pieces));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Kosher salt", 0.25, teaspoon));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Fresh Lime Juice", 1, tablespoon));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Minced Onion", 2, tablespoon));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Serrano", 2, pieces));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Cilantro", 2, tablespoon));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Freshly Ground Black Pepper", 2, pinch));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Ripe Tomato", 0.5, pieces));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Red Radish", 1, pieces));
-        guacamole.getIngredients().add(new Ingredient(guacamole, "Tortilla Chip", 1, pieces));
+        guacamole.addIngredient(new Ingredient("Avocados", 2, pieces));
+        guacamole.addIngredient(new Ingredient("Kosher salt", 0.25, teaspoon));
+        guacamole.addIngredient(new Ingredient("Fresh Lime Juice", 1, tablespoon));
+        guacamole.addIngredient(new Ingredient("Minced Onion", 2, tablespoon));
+        guacamole.addIngredient(new Ingredient("Serrano", 2, pieces));
+        guacamole.addIngredient(new Ingredient("Cilantro", 2, tablespoon));
+        guacamole.addIngredient(new Ingredient("Freshly Ground Black Pepper", 2, pinch));
+        guacamole.addIngredient(new Ingredient("Ripe Tomato", 0.5, pieces));
+        guacamole.addIngredient(new Ingredient("Red Radish", 1, pieces));
+        guacamole.addIngredient(new Ingredient("Tortilla Chip", 1, pieces));
         recipeRepository.save(guacamole);
 
 
@@ -116,29 +115,28 @@ public class DataLoader implements CommandLineRunner {
                 "\n" +
                 "\n" +
                 "Read more: https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvu7Q0MJ");
-        tacoNotes.setRecipe(tacosRecipe);
         tacosRecipe.setNotes(tacoNotes);
 
 
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Ancho Chili Powder", 2, tablespoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Dried Oregano", 1, teaspoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Dried Cumin", 1, teaspoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Sugar", 1, teaspoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Salt", 0.5, teaspoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Clove of Garlic, Choppedr", 1, pieces));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "finely grated orange zestr", 1, tablespoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "fresh-squeezed orange juice", 3, tablespoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Olive Oil", 2, tablespoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "boneless chicken thighs", 4, tablespoon));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "small corn tortillasr", 8, pieces));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "packed baby arugula", 3, cup));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "medium ripe avocados, slic", 2, pieces));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "radishes, thinly sliced", 4, pieces));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "cherry tomatoes, halved", 0.5, pint));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "red onion, thinly sliced", 0.25, pieces));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "Roughly chopped cilantro", 4, pieces));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "cup sour cream thinned with 1/4 cup milk", 4, cup));
-        tacosRecipe.getIngredients().add(new Ingredient(tacosRecipe, "lime, cut into wedges", 4, pieces));
+        tacosRecipe.addIngredient(new Ingredient("Ancho Chili Powder", 2, tablespoon));
+        tacosRecipe.addIngredient(new Ingredient("Dried Oregano", 1, teaspoon));
+        tacosRecipe.addIngredient(new Ingredient("Dried Cumin", 1, teaspoon));
+        tacosRecipe.addIngredient(new Ingredient("Sugar", 1, teaspoon));
+        tacosRecipe.addIngredient(new Ingredient("Salt", 0.5, teaspoon));
+        tacosRecipe.addIngredient(new Ingredient("Clove of Garlic, Choppedr", 1, pieces));
+        tacosRecipe.addIngredient(new Ingredient("finely grated orange zestr", 1, tablespoon));
+        tacosRecipe.addIngredient(new Ingredient("fresh-squeezed orange juice", 3, tablespoon));
+        tacosRecipe.addIngredient(new Ingredient("Olive Oil", 2, tablespoon));
+        tacosRecipe.addIngredient(new Ingredient("boneless chicken thighs", 4, tablespoon));
+        tacosRecipe.addIngredient(new Ingredient("small corn tortillasr", 8, pieces));
+        tacosRecipe.addIngredient(new Ingredient("packed baby arugula", 3, cup));
+        tacosRecipe.addIngredient(new Ingredient("medium ripe avocados, slic", 2, pieces));
+        tacosRecipe.addIngredient(new Ingredient("radishes, thinly sliced", 4, pieces));
+        tacosRecipe.addIngredient(new Ingredient("cherry tomatoes, halved", 0.5, pint));
+        tacosRecipe.addIngredient(new Ingredient("red onion, thinly sliced", 0.25, pieces));
+        tacosRecipe.addIngredient(new Ingredient("Roughly chopped cilantro", 4, pieces));
+        tacosRecipe.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", 4, cup));
+        tacosRecipe.addIngredient(new Ingredient("lime, cut into wedges", 4, pieces));
 
         tacosRecipe.setCategories(Set.of(american, mexican));
 
