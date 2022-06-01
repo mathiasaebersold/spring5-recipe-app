@@ -4,12 +4,14 @@ import com.mathiasaebersold.spring5recipeapp.model.*;
 import com.mathiasaebersold.spring5recipeapp.repositories.CategoryRepository;
 import com.mathiasaebersold.spring5recipeapp.repositories.RecipeRepository;
 import com.mathiasaebersold.spring5recipeapp.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
 @Component
+@Slf4j
 public class DataLoader implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -30,7 +32,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadData() {
-        System.out.println("Loading data");
+        log.debug("Loading data");
 
         // Categories
         Category mexican = categoryRepository.findByDescription("Mexican").orElseThrow(() -> new RuntimeException("Category Mexican is missing"));
@@ -65,7 +67,7 @@ public class DataLoader implements CommandLineRunner {
                 "\n" + "How to make guacamole - smashing avocado with fork\n" +
                 "Add the remaining ingredients to taste:\n" +
                 "Sprinkle with salt and lime (or lemon) juice. The acid in the lime juice will provide some balance to the richness of the avocado and will help delay the avocados from turning brown.\n" +
-                "\n" + "Add the chopped onion, cilantro, black pepper, and chilis. Chili peppers vary individually in their spiciness. So, start with a half of one chili pepper and add more to the guacamole to your desired degree of heat.\n" +
+                "\n" + "Add the chopped onion, cilantro, black pepper, and chilies. Chili peppers vary individually in their spiciness. So, start with a half of one chili pepper and add more to the guacamole to your desired degree of heat.\n" +
                 "\n" + "Remember that much of this is done to taste because of the variability in the fresh ingredients. Start with this recipe and adjust to your taste.\n" +
                 "\n" + "Serve immediately:\n" +
                 "If making a few hours ahead, place plastic wrap on the surface of the guacamole and press down to cover it to prevent air reaching it. (The oxygen in the air causes oxidation which will turn the guacamole brown.)\n" +
@@ -108,7 +110,7 @@ public class DataLoader implements CommandLineRunner {
 
         Notes tacoNotes = new Notes();
         tacoNotes.setRecipeNotes("We have a family motto and it is this: Everything goes better in a tortilla.\n" +
-                "Any and every kind of leftover can go inside a warm tortilla, usually with a healthy dose of pickled jalapenos. I can always sniff out a late-night snacker when the aroma of tortillas heating in a hot pan on the stove comes wafting through the house.\n" +
+                "Any and every kind of leftover can go inside a warm tortilla, usually with a healthy dose of pickled jalapenos. I can always sniff out a late-night snack when the aroma of tortillas heating in a hot pan on the stove comes wafting through the house.\n" +
                 "Today’s tacos are more purposeful – a deliberate meal instead of a secretive midnight snack!\n" +
                 "First, I marinate the chicken briefly in a spicy paste of ancho chile powder, oregano, cumin, and sweet orange juice while the grill is heating. You can also use this time to prepare the taco toppings.\n" +
                 "Grill the chicken, then let it rest while you warm the tortillas. Now you are ready to assemble the tacos and dig in. The whole meal comes together in about 30 minutes!\n" +
@@ -123,14 +125,14 @@ public class DataLoader implements CommandLineRunner {
         tacosRecipe.addIngredient(new Ingredient("Dried Cumin", 1, teaspoon));
         tacosRecipe.addIngredient(new Ingredient("Sugar", 1, teaspoon));
         tacosRecipe.addIngredient(new Ingredient("Salt", 0.5, teaspoon));
-        tacosRecipe.addIngredient(new Ingredient("Clove of Garlic, Choppedr", 1, pieces));
-        tacosRecipe.addIngredient(new Ingredient("finely grated orange zestr", 1, tablespoon));
+        tacosRecipe.addIngredient(new Ingredient("Clove of Garlic, Chopped", 1, pieces));
+        tacosRecipe.addIngredient(new Ingredient("finely grated orange zest", 1, tablespoon));
         tacosRecipe.addIngredient(new Ingredient("fresh-squeezed orange juice", 3, tablespoon));
         tacosRecipe.addIngredient(new Ingredient("Olive Oil", 2, tablespoon));
         tacosRecipe.addIngredient(new Ingredient("boneless chicken thighs", 4, tablespoon));
-        tacosRecipe.addIngredient(new Ingredient("small corn tortillasr", 8, pieces));
+        tacosRecipe.addIngredient(new Ingredient("small corn tortillas", 8, pieces));
         tacosRecipe.addIngredient(new Ingredient("packed baby arugula", 3, cup));
-        tacosRecipe.addIngredient(new Ingredient("medium ripe avocados, slic", 2, pieces));
+        tacosRecipe.addIngredient(new Ingredient("medium ripe avocados, sliced", 2, pieces));
         tacosRecipe.addIngredient(new Ingredient("radishes, thinly sliced", 4, pieces));
         tacosRecipe.addIngredient(new Ingredient("cherry tomatoes, halved", 0.5, pint));
         tacosRecipe.addIngredient(new Ingredient("red onion, thinly sliced", 0.25, pieces));
@@ -142,5 +144,6 @@ public class DataLoader implements CommandLineRunner {
 
         recipeRepository.save(tacosRecipe);
 
+        log.debug("Finished loading data");
     }
 }
