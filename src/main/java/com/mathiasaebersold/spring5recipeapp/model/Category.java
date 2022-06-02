@@ -1,9 +1,6 @@
 package com.mathiasaebersold.spring5recipeapp.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,6 +9,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode(exclude = {"recipes"})
 @RequiredArgsConstructor
 public class Category {
     @Id
